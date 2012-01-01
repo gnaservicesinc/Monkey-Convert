@@ -47,8 +47,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_monkey_convert_OBJECTS = main.$(OBJEXT) convert.$(OBJEXT) \
-	fileio.$(OBJEXT)
+am_monkey_convert_OBJECTS = main.$(OBJEXT) fileio.$(OBJEXT)
 monkey_convert_OBJECTS = $(am_monkey_convert_OBJECTS)
 monkey_convert_DEPENDENCIES =
 AM_V_lt = $(am__v_lt_$(V))
@@ -258,8 +257,6 @@ AM_CFLAGS = \
 
 monkey_convert_SOURCES = \
 	main.cc \
-	convert.cxx \
-	convert.h \
 	fileio.cxx \
 	fileio.h
 
@@ -352,7 +349,6 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/convert.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fileio.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@
 

@@ -15,8 +15,6 @@ bin_PROGRAMS = monkey_convert
 
 monkey_convert_SOURCES = \
 	main.cc \
-	convert.cxx \
-	convert.h \
 	fileio.cxx \
 	fileio.h
 

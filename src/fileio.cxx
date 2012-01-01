@@ -25,9 +25,9 @@
 #include <fstream>
 #include <iostream>
 
-
-#include "convert.h"
 #include "fileio.h"
+
+inline int convert(char chC);
 
 int fileio(char *file, bool sout, char *ofile)
 {
@@ -45,23 +45,20 @@ else{
 	inf.seekg(0, ios::end); 
 	size=inf.tellg();
 	int decArray[size];
-	int returnCheck=-1;
+	
   while (iofile.get(chChar))
     {
-		returnCheck=convert(chChar);
-		if (returnCheck >= 0 && returnCheck <= 255)
-		{
-		decArray[cnt]=returnCheck;
+
+		decArray[cnt]=convert(chChar);
 		cnt++;
-		}
 		iofile.seekg(iofile.tellg(), ios::beg);		
 	}
-
+	
 	if (sout == false)
 	{
 	ofstream outf(ofile, ios::app);		
-	outf << endl << "char monkey[" << cnt << "] = {";
-	for (int i=0; i < cnt; i++)
+	outf << endl << "char monkey[" << size << "] = {";
+	for (int i=0; i < size; i++)
 		{
 			if (i > 0)
 			{
@@ -73,8 +70,8 @@ else{
 	outf.close();
 	}
 	else {
-	cout << "char monkey[" << cnt << "] = {";
-	for (int i=0; i < cnt; i++)
+	cout << "char monkey[" << size << "] = {";
+	for (int i=0; i < size; i++)
 		{
 			if (i > 0)
 			{
@@ -83,7 +80,16 @@ else{
 		cout << decArray[i];
 		}
 	cout << "};";
+	
 	}
 	return 99;
  }
+}
+
+inline int convert(char chC)
+{
+	using namespace std;
+	int  asciiVal = 0;	
+	asciiVal = (char)chC;
+	return asciiVal;
 }

@@ -40,48 +40,52 @@ fstream iofile(file, ios::in);
 	}
 else{
 	char chChar;
-	int dec=0,cnt=0, size=0;
+	int size=0;
+	long double dec=0;
 	ifstream inf(file);
 	inf.seekg(0, ios::end); 
 	size=inf.tellg();
-	int decArray[size];
-	
-  while (iofile.get(chChar))
-    {
-
-		decArray[cnt]=convert(chChar);
-		cnt++;
-		iofile.seekg(iofile.tellg(), ios::beg);		
+	if (!size)
+	{
+		return 2;
 	}
-	
+
 	if (sout == false)
 	{
 	ofstream outf(ofile, ios::app);		
 	outf << endl << "char monkey[" << size << "] = {";
-	for (int i=0; i < size; i++)
-		{
-			if (i > 0)
+	long double cnt=0;
+  while (iofile.get(chChar))
+    {
+		if (cnt > 0)
 			{
 				outf << ",";
 			}
-		outf << decArray[i];
-		}
+		outf << convert(chChar);
+		cnt++;
+		iofile.seekg(iofile.tellg(), ios::beg);		
+	}
 	outf << "};" << endl;
 	outf.close();
+	iofile.close();
 	}
-	else {
-	cout << "char monkey[" << size << "] = {";
-	for (int i=0; i < size; i++)
-		{
-			if (i > 0)
+else {
+cout << endl << "char monkey[" << size << "] = {";
+	long double cnt=0;
+  while (iofile.get(chChar))
+    {
+		if (cnt > 0)
 			{
 				cout << ",";
 			}
-		cout << decArray[i];
-		}
-	cout << "};";
-	
+		cout << convert(chChar);
+		cnt++;
+		iofile.seekg(iofile.tellg(), ios::beg);		
 	}
+	iofile.close();
+	cout << "};" << endl;	
+}
+		
 	return 99;
  }
 }

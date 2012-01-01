@@ -1,3 +1,9 @@
+Version 1.2
+-------------
+
+ * Fixes crash on large text files.
+ * Fixes assumption error.
+ 
 Version 1.1
 -------------
 

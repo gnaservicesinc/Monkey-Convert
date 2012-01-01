@@ -41,7 +41,8 @@ int main(int argc, char *argv[])
 	char *pFilename, *pOFilename;
 	char *chInval="Invalid number of arguments";
 	#define CMDMAX 3
-	#define VERSION 1.1
+	#define VERSION 1.2
+
 
 	
 	if (argc <= 1 || argc > CMDMAX)
@@ -77,7 +78,8 @@ int main(int argc, char *argv[])
 			return(1);
 			break;
 		case 2:
-			cout << endl;
+			cout << endl << "Whoops, that file might be too large for me";
+			return(2);
 			break;
 		case 99:
 			cout << endl << endl << "Finished!";
@@ -91,5 +93,5 @@ return 0;
 inline int cnf(char* error)
 {
 	using namespace std;
-cout << endl << left << "Monkey-Converter" << endl << endl << "monkey_convert: " << error << endl << "Usage: monkey_convert [FILENAME]... [OUTPUT FILENAME (OPT)]" << endl << endl << right << "Mail bug reports and suggestions to <andrew@gnaservicesinc.com>" << endl;
+cout << endl << left << "Monkey-Converter Version: " << VERSION<< endl << endl << "monkey_convert: " << error << endl << "Usage: monkey_convert [FILENAME]... [OUTPUT FILENAME (OPT)]" << endl << endl << right << "Mail bug reports and suggestions to <andrew@gnaservicesinc.com>" << endl;
 }
